@@ -1,0 +1,26 @@
+services:
+  web:
+    image: degeneral1/lamp_stack:latest
+    container_name: lamp_stackss
+    ports:
+      - "8080:80"
+    restart: always
+    logging:
+      driver: awslogs
+      options:
+        awslogs-group: php-logs
+        awslogs-stream: php-test-logs
+        awslogs-region: eu-west-1
+    environment:
+      DB_HOST: lampdb.crqqg684ylb7.eu-west-1.rds.amazonaws.com
+      DB_USER: admin
+      DB_PASS: "!234RDSADMIN"
+      DB_NAME: lampdb
+    volumes:
+      - .:/var/www/html
+    networks:
+      - lamp_network
+
+networks:
+  lamp_network:
+    driver: bridge
