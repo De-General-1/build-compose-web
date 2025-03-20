@@ -1,6 +1,6 @@
 services:
   web:
-    image: degeneral1/lamp_stack:latest
+    build: .
     container_name: lamp_stackss
     ports:
       - "8080:80"
@@ -16,11 +16,3 @@ services:
       DB_USER: admin
       DB_PASS: "!234RDSADMIN"
       DB_NAME: lampdb
-    volumes:
-      - .:/var/www/html
-    networks:
-      - lamp_network
-
-networks:
-  lamp_network:
-    driver: bridge

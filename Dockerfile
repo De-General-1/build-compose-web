@@ -13,9 +13,6 @@ WORKDIR /var/www/html
 # Copy app files to the container
 COPY . /var/www/html
 
-# Copy the SQL initialization script to the container
-COPY db_init.sql /docker-entrypoint-initdb.d/db_init.sql
-
 # Set file permissions
 RUN chown -R www-data:www-data /var/www/html \
     && chmod -R 755 /var/www/html
